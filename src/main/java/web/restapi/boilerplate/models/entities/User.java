@@ -10,6 +10,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.persistence.*;
 
@@ -25,8 +26,8 @@ public class User {
     private String id;
     private String email;
     private String username;
-    private String password;
-    private String validator;
+    private String password; //hiden
+    private String validator; //hiden
 
     @Column(columnDefinition = "boolean default false")
     private Boolean isValidate;
@@ -39,4 +40,16 @@ public class User {
     private Date createAt;
     @LastModifiedDate
     private Date updateAt;
+
+    public HashMap toResponseData(){
+      HashMap data=new HashMap<String,Object>();
+
+      data.put("id", id);
+      data.put("email", email);
+      data.put("username",username);
+      data.put("isValidate",isValidate);
+      data.put("role",role);
+
+      return data;
+    }
 }

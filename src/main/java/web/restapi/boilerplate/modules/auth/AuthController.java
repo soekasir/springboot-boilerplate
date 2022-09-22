@@ -20,12 +20,12 @@ public class AuthController {
   AuthService authService;  
 
   @PostMapping("signup")
-  public Object signUp(@RequestBody SignUpDto req) {
-    return authService.signUp(req);
+  public Object signUp(@RequestBody SignUpDto dto) {
+    return authService.signUp(dto);
   }
 
   @PostMapping("signin")
-  public Object signIn(@RequestBody SignInDto req) {
-    return authService.signIn(req);
+  public Object signIn(@RequestBody SignInDto dto) {
+    return authService.signIn(dto);
   }
 }

@@ -15,55 +15,60 @@ public class AuthService {
   @Autowired
   private UsersRepo usersRepo;
 
-  public BaseResponse signUp(SignUpDto signUpDto){
-    BaseResponse response=new BaseResponse();
+  public BaseResponse signUp(SignUpDto dto) {
+    BaseResponse response = new BaseResponse();
+    User user = usersRepo.findByEmail(dto.getEmail()).orElse(null);
 
-    User user=usersRepo.findByEmail(signUpDto.getEmail()).orElse(null);
-    if(user != null){
-      response.setMessage("email sudah digunakan");
+    {//failed to signup
+      if (user != null) {
+        response.setMessage("email sudah digunakan");
+        return response;
+      }
+  
+      if (!dto.getPassword().equals(dto.getPassword2())) {
+        response.setMessage("password tidak sama");
+        return response;
+      }
+    }
+    {//succes to sign up
+      User newUser = dto.toUser();
+      usersRepo.save(newUser);
+      response.setSuccess(true);
+      response.setMessage("berhasil sign-up");
+      response.setData(newUser.toResponseData());
       return response;
     }
-
-    if(!signUpDto.getPassword().equals(signUpDto.getPassword2())){
-      response.setMessage("password tidak sama");
-      return response;
-    }
-
-    User newUser=signUpDto.toUser();
-
-    usersRepo.save(newUser);
-
-    response.setSuccess(true);
-    response.setMessage("berhasil sign-up");
-
-    newUser.setPassword(null);
-    response.setData(newUser);
-
-    return response;
   }
 
+  public BaseResponse signIn(SignInDto dto) {
+    BaseResponse response = new BaseResponse();
+    User user = usersRepo.findByEmail(dto.getEmail()).orElse(null);
 
-  public BaseResponse signIn(SignInDto dto){
-    BaseResponse response=new BaseResponse();
-    User user=usersRepo.findByEmail(dto.getEmail()).orElse(null);
-    if(user==null){
-      response.setMessage("email tidak ditemukan");
-      return response;
+    { // failed to login
+      if (user == null) {
+        response.setMessage("email tidak ditemukan");
+        return response;
+      }
+
+      if (!BCrypt.checkpw(dto.getPassword(), user.getPassword())) {
+        response.setMessage("password salah");
+        return response;
+      }
+
+      if (!user.getIsValidate()) {
+        response.setMessage("email belum divalidasi");
+        return response;
+      }
     }
 
-    if(!BCrypt.checkpw(dto.getPassword(), user.getPassword())){
-      response.setMessage("password salah");
+    { // success login
+      response.setSuccess(true);
+      response.setMessage("berhasil login");
+
+      response.setData(user.toResponseData());
+
       return response;
     }
-
-    response.setSuccess(true);
-    response.setMessage("berhasil login");
-
-    user.setValidator(null);
-    user.setPassword(null);
-
-    response.setData(user);
-
-    return response;
   }
+
 }
