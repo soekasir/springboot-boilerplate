@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import lombok.Getter;
 import lombok.Setter;
 import web.restapi.boilerplate.models.entities.Role;
-import web.restapi.boilerplate.models.entities.Users;
+import web.restapi.boilerplate.models.entities.User;
 
 public class SignUpDto {
   @Getter @Setter
@@ -21,8 +21,8 @@ public class SignUpDto {
 
   private BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
 
-  public Users toUser(){
-    Users newUser=new Users();
+  public User toUser(){
+    User newUser=new User();
     newUser.setEmail(email);
     newUser.setPassword(bCryptPasswordEncoder.encode(password));
     newUser.setValidator(UUID.randomUUID().toString());

@@ -4,9 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import web.restapi.boilerplate.models.entities.Users;
+import web.restapi.boilerplate.models.entities.User;
 
 
-public interface UsersRepo extends JpaRepository<Users, String> {
-  Optional<Users> findByEmail(String email);
+
+public interface UsersRepo extends JpaRepository<User, String> {
+  Optional<User> findByEmail(String email);
 }

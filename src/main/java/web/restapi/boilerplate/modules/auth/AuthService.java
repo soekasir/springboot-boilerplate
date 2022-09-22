@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import web.restapi.boilerplate.helpers.BaseResponse;
-import web.restapi.boilerplate.models.entities.Users;
+import web.restapi.boilerplate.models.entities.User;
 import web.restapi.boilerplate.models.repositories.UsersRepo;
 import web.restapi.boilerplate.modules.auth.dto.SignInDto;
 import web.restapi.boilerplate.modules.auth.dto.SignUpDto;
@@ -18,7 +18,7 @@ public class AuthService {
   public BaseResponse signUp(SignUpDto signUpDto){
     BaseResponse response=new BaseResponse();
 
-    Users user=usersRepo.findByEmail(signUpDto.getEmail()).orElse(null);
+    User user=usersRepo.findByEmail(signUpDto.getEmail()).orElse(null);
     if(user != null){
       response.setMessage("email sudah digunakan");
       return response;
@@ -29,7 +29,7 @@ public class AuthService {
       return response;
     }
 
-    Users newUser=signUpDto.toUser();
+    User newUser=signUpDto.toUser();
 
     usersRepo.save(newUser);
 
@@ -45,7 +45,7 @@ public class AuthService {
 
   public BaseResponse signIn(SignInDto dto){
     BaseResponse response=new BaseResponse();
-    Users user=usersRepo.findByEmail(dto.getEmail()).orElse(null);
+    User user=usersRepo.findByEmail(dto.getEmail()).orElse(null);
     if(user==null){
       response.setMessage("email tidak ditemukan");
       return response;
