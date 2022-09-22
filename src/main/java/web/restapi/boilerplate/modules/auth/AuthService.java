@@ -2,13 +2,13 @@ package web.restapi.boilerplate.modules.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import web.restapi.boilerplate.helpers.BaseResponse;
 import web.restapi.boilerplate.models.entities.User;
 import web.restapi.boilerplate.models.repositories.UsersRepo;
 import web.restapi.boilerplate.modules.auth.dto.SignInDto;
 import web.restapi.boilerplate.modules.auth.dto.SignUpDto;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
 @Service
 public class AuthService {
@@ -30,6 +30,7 @@ public class AuthService {
         return response;
       }
     }
+
     {//succes to sign up
       User newUser = dto.toUser();
       usersRepo.save(newUser);
@@ -64,9 +65,7 @@ public class AuthService {
     { // success login
       response.setSuccess(true);
       response.setMessage("berhasil login");
-
       response.setData(user.toResponseData());
-
       return response;
     }
   }

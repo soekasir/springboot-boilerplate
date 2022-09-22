@@ -41,8 +41,8 @@ public class User {
     @LastModifiedDate
     private Date updateAt;
 
-    public HashMap toResponseData(){
-      HashMap data=new HashMap<String,Object>();
+    public HashMap<String,Object> toResponseData(){
+      HashMap<String,Object> data=new HashMap<String,Object>();
 
       data.put("id", id);
       data.put("email", email);
