@@ -1,10 +1,8 @@
-package web.restapi.boilerplate.models.repositories;
+package web.restapi.boilerplate.models.user;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import web.restapi.boilerplate.models.entities.User;
 
 
 

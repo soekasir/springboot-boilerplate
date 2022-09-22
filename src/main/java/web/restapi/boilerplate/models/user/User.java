@@ -1,8 +1,9 @@
-package web.restapi.boilerplate.models.entities;
+package web.restapi.boilerplate.models.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import web.restapi.boilerplate.models.role.Role;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;

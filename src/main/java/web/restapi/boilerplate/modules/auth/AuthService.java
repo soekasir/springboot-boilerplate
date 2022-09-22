@@ -12,11 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import web.restapi.boilerplate.helpers.BaseResponse;
-import web.restapi.boilerplate.models.entities.Role;
-import web.restapi.boilerplate.models.entities.User;
-import web.restapi.boilerplate.models.enums.ERole;
-import web.restapi.boilerplate.models.repositories.RoleRepo;
-import web.restapi.boilerplate.models.repositories.UsersRepo;
+import web.restapi.boilerplate.models.role.ERole;
+import web.restapi.boilerplate.models.role.Role;
+import web.restapi.boilerplate.models.role.RoleRepo;
+import web.restapi.boilerplate.models.user.User;
+import web.restapi.boilerplate.models.user.UsersRepo;
 import web.restapi.boilerplate.modules.auth.dto.SignInDto;
 import web.restapi.boilerplate.modules.auth.dto.SignUpDto;
 import web.restapi.boilerplate.security.jwt.JwtHelper;

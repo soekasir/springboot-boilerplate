@@ -1,8 +1,6 @@
-package web.restapi.boilerplate.models.entities;
+package web.restapi.boilerplate.models.role;
 
 import javax.persistence.*;
-
-import web.restapi.boilerplate.models.enums.ERole;
 
 @Entity
 @Table(name = "roles")
