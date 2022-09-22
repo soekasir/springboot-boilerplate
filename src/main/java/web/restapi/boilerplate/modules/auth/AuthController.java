@@ -14,7 +14,7 @@ import web.restapi.boilerplate.modules.auth.dto.SignUpDto;
 
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("api/auth")
 public class AuthController {
   @Autowired
   AuthService authService;  

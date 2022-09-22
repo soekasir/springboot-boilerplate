@@ -1,5 +1,5 @@
 package web.restapi.boilerplate.models.enums;
 
-public enum Role {
+public enum ERole {
   ADMIN, USER, SUPERADMIN;
 }

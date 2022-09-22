@@ -35,3 +35,7 @@ spring:
 #       otp: ${REDIS_OTP_OTP:otp}
 #       token: ${REDIS_REKBER_TOKEN:token}
 #       transaction: ${REDIS_REKBER_TRANSACTION:transaction}
+app:
+  jwt:
+    secret: secret
+    expiration-days: 14

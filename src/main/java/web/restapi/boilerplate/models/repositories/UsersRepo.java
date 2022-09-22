@@ -11,4 +11,5 @@ import web.restapi.boilerplate.models.entities.User;
 public interface UsersRepo extends JpaRepository<User, String> {
   Optional<User> findByEmail(String email);
   Optional<User> findByEmailAndIsValidate(String email, Boolean isValidate);
+  Optional<User> findByUsername(String username);
 }
