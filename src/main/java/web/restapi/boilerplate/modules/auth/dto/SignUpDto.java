@@ -8,8 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import lombok.Getter;
 import lombok.Setter;
-import web.restapi.boilerplate.models.entities.Role;
 import web.restapi.boilerplate.models.entities.User;
+import web.restapi.boilerplate.models.enums.Role;
 
 public class SignUpDto {
   @Getter @Setter
